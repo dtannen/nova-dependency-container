@@ -124,15 +124,14 @@ trait HasDependencies
      */
     protected function applyRulesForChildFields($childField)
     {
-        $childField->rules[] = "nullable";
         if (isset($childField->rules)) {
-            $childField->rules[] = $childField->attribute;
+            $childField->rules[] = "nullable:".$childField->attribute;
         }
         if (isset($childField->creationRules)) {
-            $childField->creationRules[] = $childField->attribute;
+            $childField->creationRules[] = "nullable:".$childField->attribute;
         }
         if (isset($childField->updateRules)) {
-            $childField->updateRules[] = $childField->attribute;
+            $childField->updateRules[] = "nullable:".$childField->attribute;
         }
         return $childField;
     }
